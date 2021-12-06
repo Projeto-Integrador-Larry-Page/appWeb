@@ -1,0 +1,13 @@
+header.header {
+    background: linear-gradient(135deg, #000000 0%, #000000 10%, #420b0b 50%, #701313 70%, #6b006e 100%);
+    padding: 0px 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+}
+
+header.header h1 {
+    font-size: 3.0em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
