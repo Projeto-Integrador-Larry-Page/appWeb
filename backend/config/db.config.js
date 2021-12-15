@@ -4,7 +4,7 @@ const mysql = require("mysql2");
 const cors = require("cors");
 
 const db = mysql.createPool({
-  host: "ec2-54-164-93-115.compute-1.amazonaws.com",
+  host: "ec2-34-205-125-254.compute-1.amazonaws.com",
   user: "bigodao",
   password: "Igorbigode8!",
   database: "test",
@@ -13,16 +13,27 @@ const db = mysql.createPool({
 app.use(express.json());
 app.use(cors());
 
-app.post("/search", (req, res) => {
-  const { name } = req.body;
-  const { cost } = req.body;
-  const { category } = req.body;
+var user =  
 
-  let mysql =
-    "SELECT * from test2 where user = ?";
-  db.query(mysql, [name, cost, category], (err, result) => {
-    if (err) res.send(err);
-    res.send(result);
+app.get("/getView", (req, res) => {
+  let mysql = "SELECT * FROM viewEventos ";
+  db.query(mysql, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/getUser/:user", (req, res) => {
+  const user = req.params.user;
+  db.query("SELECT * FROM viewEventos WHERE `user` = ?;", user, (err, result) => {
+if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
   });
 });
 
